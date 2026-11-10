@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: distributed-event-pipeline
+  namespace: event-pipeline
+  labels:
+    app: distributed-event-pipeline
+spec:
+  selector:
+    app: distributed-event-pipeline
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+    - name: metrics
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  type: ClusterIP
